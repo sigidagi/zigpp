@@ -8,4 +8,8 @@ Advantage using 'Zig' compiler for cross-compilation:
 1. Zig can compile to all supported targets with a single toolchain.Check all supported targets: `zig targets`
 2. Hermetic toolchain. Given the same input, always produces the same output regardless of the environment. In this context “hermetic” means that it does not use files from the host (which is “leaky”) and contains everything it needs to compile a file. 
 
+### Examples
 
+1. `./build.sh aarch64 linux gnu`
+2. `./build.sh x86_64 macos`
+3. `./build.sh x86_64 linux musl`
