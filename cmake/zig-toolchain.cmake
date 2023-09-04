@@ -5,8 +5,14 @@ set(CLIB "gnu" CACHE STRING "c library")
 set(CMAKE_SYSTEM_NAME "Linux")
 set(CMAKE_SYSTEM_VERSION 1)
 set(CMAKE_SYSTEM_PROCESSOR ${CPU_ARCH})
-set(CMAKE_C_COMPILER "zig" cc -target ${CPU_ARCH}-${MACHINE}-${CLIB})
-set(CMAKE_CXX_COMPILER "zig" c++ -target ${CPU_ARCH}-${MACHINE}-${CLIB})
+
+if (CLIB) 
+    set(CMAKE_C_COMPILER "zig" cc -target ${CPU_ARCH}-${MACHINE}-${CLIB})
+    set(CMAKE_CXX_COMPILER "zig" c++ -target ${CPU_ARCH}-${MACHINE}-${CLIB})
+else()
+    set(CMAKE_C_COMPILER "zig" cc -target ${CPU_ARCH}-${MACHINE})
+    set(CMAKE_CXX_COMPILER "zig" c++ -target ${CPU_ARCH}-${MACHINE})
+endif(CLIB)
 
 set(SCRIPT_SUFFIX ".sh")
 
