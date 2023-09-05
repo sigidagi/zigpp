@@ -14,6 +14,13 @@ if [ $# -eq 0 ]; then
     CLIB="gnu"
 fi
 
+OUT_DIR="build-${ARCH}/${MACHINE}"
+mkdir -p ${OUT_DIR} 
+
+pushd ${OUT_DIR}
+cmake ../../
+popd
+
 if [ $# -eq 1 ]; then
     echo "Not enough arguments: provide triple, run 'zig targets' for available triples"
     exit 
@@ -23,15 +30,15 @@ if [ $# -eq 2 ]; then
     echo "---------------------------"
     echo "Using target: '${ARCH}-${MACHINE}'"
     echo "---------------------------"
-    cmake -B build-${ARCH} -DCPU_ARCH:STRING=${ARCH} -DMACHINE:STRING=${MACHINE} -DCLIB:STRING="" -G Ninja -DCMAKE_TOOLCHAIN_FILE=cmake/zig-toolchain.cmake
+    cmake -B ${OUT_DIR} -DCPU_ARCH:STRING=${ARCH} -DMACHINE:STRING=${MACHINE} -DCLIB:STRING="" -G Ninja -DCMAKE_TOOLCHAIN_FILE=cmake/zig-toolchain.cmake
 fi
 
 if [ $# -eq 3 ]; then
     echo "---------------------------"
     echo "Using target: '${ARCH}-${MACHINE}-${CLIB}'"
     echo "---------------------------"
-    cmake -B build-${ARCH} -DCPU_ARCH:STRING=${ARCH} -DMACHINE:STRING=${MACHINE} -DCLIB:STRING=${CLIB} -G Ninja -DCMAKE_TOOLCHAIN_FILE=cmake/zig-toolchain.cmake
+    cmake -B ${OUT_DIR} -DCPU_ARCH:STRING=${ARCH} -DMACHINE:STRING=${MACHINE} -DCLIB:STRING=${CLIB} -G Ninja -DCMAKE_TOOLCHAIN_FILE=cmake/zig-toolchain.cmake
 fi
 
 # Build
-cmake --build build-${ARCH}
+cmake --build ${OUT_DIR} 
