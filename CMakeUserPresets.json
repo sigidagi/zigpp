@@ -1,0 +1,57 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 19
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/zig-toolchain.cmake"
+      }
+    },
+    {
+      "name": "x86_64-linux-gnu",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CPU_ARCH":  "x86_64",
+        "MACHINE": "linux",
+        "CLIB": "gnu"
+      },
+      "environment": {
+        "CMAKE_PREFIX_PATH": "${sourceDir}/cmake"
+      }
+    },
+    {
+      "name": "aarch64-macos-none",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CPU_ARCH":  "aarch64",
+        "MACHINE": "macos",
+        "CLIB": "none"
+      },
+      "environment": {
+        "CMAKE_PREFIX_PATH": "${sourceDir}/cmake"
+      }
+    },
+    {
+      "name": "aarch64-linux-musl",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CPU_ARCH":  "aarch64",
+        "MACHINE": "linux",
+        "CLIB": "musl"
+      },
+      "environment": {
+        "CMAKE_PREFIX_PATH": "${sourceDir}/cmake"
+      }
+    }
+  ]
+}

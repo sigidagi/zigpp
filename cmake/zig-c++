@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
-zig c++ $@
+#!/bin/sh
+zig c++ "$@"

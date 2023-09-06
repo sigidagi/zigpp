@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
-zig cc $@
+#!/bin/sh
+zig cc "$@"

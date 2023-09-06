@@ -1,4 +1,4 @@
-## Cross-compiling with zig
+[##](##) Cross-compiling with zig
 
 ### Zig install
 
@@ -10,6 +10,9 @@ Advantage using 'Zig' compiler for cross-compilation:
 
 ### Examples
 
-1. `./build.sh aarch64 linux gnu`
-2. `./build.sh x86_64 macos`
-3. `./build.sh x86_64 linux musl`
+```
+cmake [list presets](--list-presets)
+cmake -B build-linux --preset aarch64-linux-musl
+cmake --build build-linux 
+
+```
