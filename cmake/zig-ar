@@ -1,2 +1,2 @@
 #!/bin/sh
-zig ar "$@"
+${HOME}/.local/bin/zig ar "$@"

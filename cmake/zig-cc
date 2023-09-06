@@ -1,2 +1,2 @@
 #!/bin/sh
-zig cc "$@"
+${HOME}/.local/bin/zig cc "$@"
