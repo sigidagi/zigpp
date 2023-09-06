@@ -11,7 +11,7 @@ Advantage using 'Zig' compiler for cross-compilation:
 ### Examples
 
 ```
-cmake [list presets](--list-presets)
+cmake --list-presets
 cmake -B build-linux --preset aarch64-linux-musl
 cmake --build build-linux 
 
