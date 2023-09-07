@@ -25,6 +25,7 @@ if(NOT ZIG_EXE)
         URL https://ziglang.org/download/0.11.0/zig-linux-x86_64-0.11.0.tar.xz
         URL_HASH MD5=7cc7421bc69470eea31c5f15dba37850
         OVERRIDE_FIND_PACKAGE
+        DOWNLOAD_EXTRACT_TIMESTAMP TRUE
     )
 
     FetchContent_MakeAvailable(${ZIG})
